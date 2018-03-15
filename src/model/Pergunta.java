@@ -4,6 +4,7 @@ public class Pergunta {
 
     private String texto;
     private Opcao[] opcoes;
+    private DIFICULDADE dificuldade;
 
     public Pergunta() {
 
@@ -30,12 +31,35 @@ public class Pergunta {
     public void setOpcoes(Opcao[] opcoes) {
         this.opcoes = opcoes;
     }
-
-    public void selecionarOpcao() {
-
+    
+    
+    public DIFICULDADE getDificuldade() {
+        return dificuldade;
     }
 
-    public void gerarPontuacao() {
+    public void setDificuldade(DIFICULDADE dificuldade) {
+        this.dificuldade = dificuldade;
+    }
 
+    public boolean selecionarOpcao(int indexOpcao) {
+        return this.opcoes[indexOpcao].isCorreto();
+    }
+
+    public int gerarPontuacao() {
+        if(this.dificuldade == DIFICULDADE.FACIL) {
+            return 1000;
+        }else if(this.dificuldade == DIFICULDADE.MEDIO) {
+            return 10000;
+        }else if(this.dificuldade == DIFICULDADE.DIFICIL) {
+            return 100000;
+        }else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String menssagem = this.texto;
+        return menssagem;
     }
 }

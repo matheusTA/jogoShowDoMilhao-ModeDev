@@ -9,9 +9,9 @@ public class Jogador {
 
     }
 
-    public Jogador(String nome, int pontos) {
+    public Jogador(String nome) {
         this.nome = nome;
-        this.pontos = pontos;
+        pontos = 0;
     }
 
     public String getNome() {
@@ -30,8 +30,8 @@ public class Jogador {
         this.pontos = pontos;
     }
 
-    public void adicionarPontos() {
-
+    public void adicionarPontos(int novosPontos) {
+        this.pontos += novosPontos;
     }
 
 }

@@ -28,5 +28,12 @@ public class Opcao {
     public void setCorreto(boolean correto) {
         this.correto = correto;
     }
+    
+    @Override
+    public String toString() {
+        String menssagem = this.texto;
+        return menssagem;
+    }
+    
 
 }
