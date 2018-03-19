@@ -1,8 +1,8 @@
 package controller;
 
-import model.DIFICULDADE;
 import model.Opcao;
 import model.Pergunta;
+import utils.DIFICULDADE;
 
 public class PerguntaController {
 

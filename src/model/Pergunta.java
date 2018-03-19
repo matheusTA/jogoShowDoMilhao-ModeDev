@@ -1,5 +1,7 @@
 package model;
 
+import utils.DIFICULDADE;
+
 public class Pergunta {
 
     private String texto;

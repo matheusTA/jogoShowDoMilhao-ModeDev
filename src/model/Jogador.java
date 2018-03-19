@@ -34,4 +34,9 @@ public class Jogador {
         this.pontos += novosPontos;
     }
 
+    @Override
+    public String toString() {
+     String menssagem = "Nome: " + this.nome + "\nPontos: " + this.pontos;
+        return menssagem;
+    }
 }
