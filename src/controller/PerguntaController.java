@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
+
 import model.Opcao;
 import model.Pergunta;
+import utils.CSVLeitor;
 import utils.DIFICULDADE;
 
 public class PerguntaController {
@@ -15,21 +18,52 @@ public class PerguntaController {
     }
     
     public Pergunta[] carregarPerguntas() {
-        Pergunta pergunta = new Pergunta();
-        pergunta.setDificuldade(DIFICULDADE.FACIL);
+
+        ArrayList<String[]> perguntasTexto = CSVLeitor.lerArquivo("Perguntas");
+        Pergunta[] perguntas = new Pergunta[perguntasTexto.size()];
         
-        pergunta.setTexto("Qual o tamanho em bits para a variavel char?");
-        Opcao opcao01 = new Opcao("1", false);
-        Opcao opcao02 = new Opcao("8", false);
-        Opcao opcao03 = new Opcao("16", true);
-        Opcao opcao04 = new Opcao("38", false);
-        Opcao opcao05 = new Opcao("64", false);
-
-        Opcao[] opcoes = { opcao01, opcao02, opcao03, opcao04, opcao05 };
-        pergunta.setOpcoes(opcoes);
-
-       Pergunta[] perguntasFacies = {pergunta, pergunta, pergunta, pergunta, pergunta};
-       return perguntasFacies;
+        for (int i = 0; i < perguntasTexto.size(); i++) {
+            
+           String[] perguntaLinha = perguntasTexto.get(i);
+           String texto = perguntaLinha[0];
+           
+           String textoPerguntaA = perguntaLinha[1];
+           String respostaA = perguntaLinha[2];
+           Opcao opcaoA = new Opcao(textoPerguntaA, Boolean.parseBoolean(respostaA));
+           
+           String textoPerguntaB = perguntaLinha[3];
+           String respostaB = perguntaLinha[4];
+           Opcao opcaoB = new Opcao(textoPerguntaB, Boolean.parseBoolean(respostaB));
+           
+           String textoPerguntaC = perguntaLinha[5];
+           String respostaC = perguntaLinha[6];
+           Opcao opcaoC = new Opcao(textoPerguntaC, Boolean.parseBoolean(respostaC));
+           
+           String textoPerguntaD = perguntaLinha[7];
+           String respostaD = perguntaLinha[8];
+           Opcao opcaoD = new Opcao(textoPerguntaD, Boolean.parseBoolean(respostaD));
+           
+           Opcao[] opcoes = {opcaoA, opcaoB, opcaoC, opcaoD};
+           
+           String dificuldade = perguntaLinha[9];
+           Pergunta pergunta = null;
+           
+           if(dificuldade.equals("FACIL")) {
+                pergunta = new Pergunta(texto, opcoes, DIFICULDADE.FACIL);
+           }else if(dificuldade.equals("MEDIO")) {
+                pergunta = new Pergunta(texto, opcoes, DIFICULDADE.MEDIO);
+           }else if(dificuldade.equals("DIFICIL")) {
+                pergunta = new Pergunta(texto, opcoes, DIFICULDADE.DIFICIL);
+           }
+           
+           perguntas[i] = pergunta;
+           
+        }
+        
+        return perguntas;
     }
+    
+
+    
     
 }

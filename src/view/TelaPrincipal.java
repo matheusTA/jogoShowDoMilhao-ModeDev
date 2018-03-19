@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controller.PerguntaController;
+import model.Pergunta;
+
 public class TelaPrincipal {
 
     private JFrame frame;
@@ -56,11 +59,17 @@ public class TelaPrincipal {
         btnJogar.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnJogar.setBounds(172, 96, 98, 37);
         frame.getContentPane().add(btnJogar);
+
         
         JButton btnNewButton = new JButton("Recorde");
         btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
+                PerguntaController perguntaController = new PerguntaController();
+                Pergunta[] perguntas = perguntaController.carregarPerguntas();
+                for(int i = 0; i < perguntas.length; i++) {
+                    System.out.println(perguntas[i]);
+                }
             }
         });
         btnNewButton.setBounds(172, 154, 98, 37);

@@ -8,14 +8,10 @@ public class Pergunta {
     private Opcao[] opcoes;
     private DIFICULDADE dificuldade;
 
-    public Pergunta() {
-
-    }
-
-    public Pergunta(String texto, Opcao[] opcoes) {
-
+    public Pergunta(String texto, Opcao[] opcoes, DIFICULDADE dificuldade) {
         this.texto = texto;
         this.opcoes = opcoes;
+        this.dificuldade = dificuldade;
     }
 
     public String getTexto() {

@@ -4,10 +4,6 @@ public class Opcao {
     private String texto;
     private boolean correto;
 
-    public Opcao() {
-
-    }
-
     public Opcao(String texto, boolean correto) {
         this.texto = texto;
         this.correto = correto;
