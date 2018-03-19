@@ -5,13 +5,15 @@ public class Jogador {
     private String nome;
     private int pontos;
 
-    public Jogador() {
-
-    }
-
     public Jogador(String nome) {
         this.nome = nome;
         pontos = 0;
+    }
+    
+    public Jogador(String nome, int pontos) {
+        this.nome = nome;
+        this.pontos = pontos;
+        
     }
 
     public String getNome() {
