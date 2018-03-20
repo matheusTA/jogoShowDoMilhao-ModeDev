@@ -45,11 +45,11 @@ public class Pergunta {
 
     public int gerarPontuacao() {
         if(this.dificuldade == DIFICULDADE.FACIL) {
-            return 1000;
+            return 25000;
         }else if(this.dificuldade == DIFICULDADE.MEDIO) {
             return 10000;
         }else if(this.dificuldade == DIFICULDADE.DIFICIL) {
-            return 100000;
+            return 250000;
         }else {
             return 0;
         }

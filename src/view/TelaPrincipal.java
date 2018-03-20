@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import controller.JogadorController;
+import controller.PerguntaController;
 
 public class TelaPrincipal {
 
@@ -24,7 +26,7 @@ public class TelaPrincipal {
             public void run() {
                 try {
                     TelaPrincipal window = new TelaPrincipal();
-                    
+
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -33,8 +35,6 @@ public class TelaPrincipal {
         });
     }
 
-
-    
     /**
      * Create the application.
      */
@@ -51,38 +51,51 @@ public class TelaPrincipal {
         frame.setBackground(new Color(0, 0, 0));
         frame.getContentPane().setBackground(new Color(102, 153, 153));
         frame.setBounds(100, 100, 450, 300);
-        
+
         frame.getContentPane().setLayout(null);
-        
+
         JButton btnJogar = new JButton("Jogar");
+        btnJogar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                trocarTelaPergunta();
+            };
+        });
         btnJogar.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnJogar.setBounds(172, 96, 98, 37);
         frame.getContentPane().add(btnJogar);
 
-        
         JButton btnNewButton = new JButton("Recorde");
         btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                JogadorController  jogadorController = new JogadorController();
+               trocarTelaRecorde();
                 
-                for(int i = 0; i < jogadorController.carregarRecordes().length; i++ ) {
-                    System.out.println(jogadorController.carregarRecordes()[i]);
-                }
-            }
+            };
         });
         btnNewButton.setBounds(172, 154, 98, 37);
         frame.getContentPane().add(btnNewButton);
-        
+
         JButton btnSair = new JButton("Sair");
         btnSair.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnSair.setBounds(172, 213, 98, 37);
         frame.getContentPane().add(btnSair);
-        
+
         JLabel lblShowDoMilho = new JLabel("Show Do Milh\u00E3o: Modo Desenvolvedor");
         lblShowDoMilho.setForeground(new Color(204, 204, 204));
         lblShowDoMilho.setFont(new Font("Brush Script MT", Font.BOLD | Font.ITALIC, 24));
         lblShowDoMilho.setBounds(39, 23, 371, 42);
         frame.getContentPane().add(lblShowDoMilho);
+    }
+    
+    private void trocarTelaPergunta() {
+        this.frame.setVisible(false);
+        TelaPergunta telaPergunta = new TelaPergunta();
+        telaPergunta.show();
+    }
+    
+    private void trocarTelaRecorde() {
+        this.frame.setVisible(false);
+        TelaRecorde telaRecorde = new TelaRecorde();
+        telaRecorde.show();
     }
 }
