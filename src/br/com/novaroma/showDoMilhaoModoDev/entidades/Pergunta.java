@@ -1,6 +1,6 @@
-package model;
+package br.com.novaroma.showDoMilhaoModoDev.entidades;
 
-import utils.DIFICULDADE;
+import br.com.novaroma.showDoMilhaoModoDev.utils.DIFICULDADE;
 
 public class Pergunta {
 

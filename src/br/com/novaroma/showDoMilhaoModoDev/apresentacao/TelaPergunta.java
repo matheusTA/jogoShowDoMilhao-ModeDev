@@ -1,13 +1,14 @@
-package view;
+package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.PerguntaController;
-import model.Jogador;
-import model.Pergunta;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Pergunta;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.PerguntaController;
+
 import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;

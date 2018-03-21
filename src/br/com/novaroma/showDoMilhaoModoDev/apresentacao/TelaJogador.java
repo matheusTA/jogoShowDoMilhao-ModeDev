@@ -1,4 +1,4 @@
-package view;
+package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controller.JogadorController;
-import model.Jogador;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
 
 public class TelaJogador extends JFrame {
 

@@ -1,4 +1,4 @@
-package model;
+package br.com.novaroma.showDoMilhaoModoDev.entidades;
 
 public class Opcao {
     private String texto;

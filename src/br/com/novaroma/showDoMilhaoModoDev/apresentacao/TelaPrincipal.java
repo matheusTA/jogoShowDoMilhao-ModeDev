@@ -1,4 +1,4 @@
-package view;
+package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import controller.JogadorController;
-import controller.PerguntaController;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.PerguntaController;
 
 public class TelaPrincipal {
 

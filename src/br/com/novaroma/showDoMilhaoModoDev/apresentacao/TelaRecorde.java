@@ -1,4 +1,4 @@
-package view;
+package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import java.awt.BorderLayout;
 
@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.JogadorController;
-import model.Jogador;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
 
 public class TelaRecorde extends JFrame {
 

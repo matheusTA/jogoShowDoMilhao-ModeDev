@@ -1,11 +1,11 @@
-package controller;
+package br.com.novaroma.showDoMilhaoModoDev.negocio;
 
 import java.util.ArrayList;
 
-import model.Opcao;
-import model.Pergunta;
-import utils.CSVLeitor;
-import utils.DIFICULDADE;
+import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Opcao;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Pergunta;
+import br.com.novaroma.showDoMilhaoModoDev.utils.DIFICULDADE;
 
 public class PerguntaController {
 

@@ -1,10 +1,9 @@
-package controller;
+package br.com.novaroma.showDoMilhaoModoDev.negocio;
 
 import java.util.ArrayList;
 
-import model.Jogador;
-import model.Pergunta;
-import utils.CSVLeitor;
+import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
+import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
 
 public class JogadorController {
 

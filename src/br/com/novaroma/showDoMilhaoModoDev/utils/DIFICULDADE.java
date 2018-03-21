@@ -1,4 +1,4 @@
-package utils;
+package br.com.novaroma.showDoMilhaoModoDev.utils;
 
 public enum DIFICULDADE {
     

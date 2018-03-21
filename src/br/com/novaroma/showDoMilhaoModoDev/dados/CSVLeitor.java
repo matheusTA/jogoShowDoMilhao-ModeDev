@@ -1,4 +1,4 @@
-package utils;
+package br.com.novaroma.showDoMilhaoModoDev.dados;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
