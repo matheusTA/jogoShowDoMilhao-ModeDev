@@ -49,7 +49,7 @@ public class TelaPrincipal {
         frame = new JFrame();
         frame.getContentPane().setForeground(new Color(0, 0, 0));
         frame.setBackground(new Color(0, 0, 0));
-        frame.getContentPane().setBackground(new Color(102, 153, 153));
+        frame.getContentPane().setBackground(new Color(51, 51, 255));
         frame.setBounds(100, 100, 450, 300);
 
         frame.getContentPane().setLayout(null);
@@ -80,10 +80,10 @@ public class TelaPrincipal {
         btnSair.setBounds(172, 213, 98, 37);
         frame.getContentPane().add(btnSair);
 
-        JLabel lblShowDoMilho = new JLabel("Show Do Milh\u00E3o: Modo Desenvolvedor");
-        lblShowDoMilho.setForeground(new Color(204, 204, 204));
-        lblShowDoMilho.setFont(new Font("Brush Script MT", Font.BOLD | Font.ITALIC, 24));
-        lblShowDoMilho.setBounds(39, 23, 371, 42);
+        JLabel lblShowDoMilho = new JLabel("    Show Do Milh\u00E3o: \r\nModo Desenvolvedor");
+        lblShowDoMilho.setForeground(new Color(255, 255, 0));
+        lblShowDoMilho.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 24));
+        lblShowDoMilho.setBounds(66, 11, 330, 74);
         frame.getContentPane().add(lblShowDoMilho);
     }
     
