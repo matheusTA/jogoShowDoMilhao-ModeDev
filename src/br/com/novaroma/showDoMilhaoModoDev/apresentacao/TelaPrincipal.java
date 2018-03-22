@@ -79,6 +79,11 @@ public class TelaPrincipal {
         btnSair.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnSair.setBounds(172, 213, 98, 37);
         frame.getContentPane().add(btnSair);
+        btnSair.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                System.exit(0);         
+            };
+        });
 
         JLabel lblShowDoMilho = new JLabel("    Show Do Milh\u00E3o: \r\nModo Desenvolvedor");
         lblShowDoMilho.setForeground(new Color(255, 255, 0));

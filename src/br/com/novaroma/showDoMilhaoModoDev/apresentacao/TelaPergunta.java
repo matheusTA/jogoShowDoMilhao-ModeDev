@@ -25,6 +25,7 @@ public class TelaPergunta extends JFrame {
     private Pergunta[] perguntas;
     private Pergunta perguntaAtual;
     private JTextField textField;
+    private JLabel lblNewLabel_1;
     private PerguntaController perguntaController = new PerguntaController();
 
     private Jogador jogador = new Jogador("Matheus", 0);
@@ -32,33 +33,45 @@ public class TelaPergunta extends JFrame {
     public TelaPergunta() {
         setBackground(Color.BLUE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 572, 408);
         contentPane = new JPanel();
         contentPane.setBackground(Color.BLUE);
         contentPane.setForeground(new Color(255, 255, 51));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-
+        
+        JLabel lblNewLabel = new JLabel("Nome");
+        lblNewLabel.setBounds(371, 11, 133, 25);
+        contentPane.add(lblNewLabel);
+        lblNewLabel.setText("Nome: " +this.jogador.getNome());
+        
+        this.lblNewLabel_1 = new JLabel("Pontos");
+        this.lblNewLabel_1.setBounds(371, 36, 133, 25);
+        contentPane.add(this.lblNewLabel_1);
+        this.lblNewLabel_1.setText("Pontuação: " + this.jogador.getPontos());
+        
         JLabel lblText = new JLabel();
-        lblText.setFont(new Font("Agency FB", Font.PLAIN, 14));
+        lblText.setFont(new Font("Agency FB", Font.BOLD, 24));
         lblText.setForeground(new Color(255, 255, 0));
-        lblText.setBounds(20, 11, 388, 61);
+        lblText.setBounds(20, 91, 526, 61);
         contentPane.add(lblText);
 
         JLabel lblOpcoes = new JLabel();
+        lblOpcoes.setForeground(Color.YELLOW);
+        lblOpcoes.setText("<>");
         lblOpcoes.setToolTipText("");
         lblOpcoes.setHorizontalAlignment(SwingConstants.CENTER);
-        lblOpcoes.setBounds(20, 83, 372, 113);
+        lblOpcoes.setBounds(20, 163, 526, 113);
         contentPane.add(lblOpcoes);
 
         textField = new JTextField();
-        textField.setBounds(94, 208, 116, 20);
+        textField.setBounds(20, 302, 116, 20);
         contentPane.add(textField);
         textField.setColumns(10);
 
         JButton btnNewButton = new JButton("New button");
-        btnNewButton.setBounds(235, 207, 89, 23);
+        btnNewButton.setBounds(163, 301, 116, 23);
         contentPane.add(btnNewButton);
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -77,6 +90,8 @@ public class TelaPergunta extends JFrame {
 
         iniciarJogo();
         exibirPergunta(lblText, lblOpcoes);
+        
+      
     }
 
     private void iniciarJogo() {
@@ -106,6 +121,7 @@ public class TelaPergunta extends JFrame {
 
         if (resultadoDaResposta == true) {
             jogador.adicionarPontos(this.perguntaAtual.gerarPontuacao());
+            this.lblNewLabel_1.setText("Pontuação: " + this.jogador.getPontos());
             return true;
         } else {
             return false;
@@ -121,6 +137,4 @@ public class TelaPergunta extends JFrame {
     private void addContadorPerguntas() {
         this.contadorDePerguntas++;
     }
-
-
 }
