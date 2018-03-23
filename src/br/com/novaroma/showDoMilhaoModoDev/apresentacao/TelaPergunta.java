@@ -26,58 +26,69 @@ public class TelaPergunta extends JFrame {
     private Pergunta perguntaAtual;
     private JTextField textField;
     private JLabel lblNewLabel_1;
+    
     private PerguntaController perguntaController = new PerguntaController();
 
-    private Jogador jogador = new Jogador("Matheus", 0);
+    private Jogador jogador;
 
-    public TelaPergunta() {
+    public TelaPergunta(Jogador jogadorCriado) {
+        
+        this.jogador = jogadorCriado;
+        
         setBackground(Color.BLUE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 572, 408);
+        setBounds(100, 100, 909, 443);
         contentPane = new JPanel();
-        contentPane.setBackground(Color.BLUE);
+        contentPane.setBackground(new Color(250, 235, 215));
         contentPane.setForeground(new Color(255, 255, 51));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        setLocationRelativeTo(null);
+
         
         JLabel lblNewLabel = new JLabel("Nome");
-        lblNewLabel.setBounds(371, 11, 133, 25);
+        lblNewLabel.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        lblNewLabel.setBounds(10, 11, 351, 25);
         contentPane.add(lblNewLabel);
         lblNewLabel.setText("Nome: " +this.jogador.getNome());
         
         this.lblNewLabel_1 = new JLabel("Pontos");
-        this.lblNewLabel_1.setBounds(371, 36, 133, 25);
+        lblNewLabel_1.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        this.lblNewLabel_1.setBounds(10, 47, 133, 25);
         contentPane.add(this.lblNewLabel_1);
         this.lblNewLabel_1.setText("Pontuação: " + this.jogador.getPontos());
         
         JLabel lblText = new JLabel();
         lblText.setFont(new Font("Agency FB", Font.BOLD, 24));
-        lblText.setForeground(new Color(255, 255, 0));
-        lblText.setBounds(20, 91, 526, 61);
+        lblText.setForeground(new Color(0, 0, 0));
+        lblText.setBounds(10, 91, 873, 61);
         contentPane.add(lblText);
 
         JLabel lblOpcoes = new JLabel();
-        lblOpcoes.setForeground(Color.YELLOW);
+        lblOpcoes.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        lblOpcoes.setForeground(new Color(0, 0, 0));
         lblOpcoes.setText("<>");
         lblOpcoes.setToolTipText("");
         lblOpcoes.setHorizontalAlignment(SwingConstants.CENTER);
-        lblOpcoes.setBounds(20, 163, 526, 113);
+        lblOpcoes.setBounds(20, 163, 863, 145);
         contentPane.add(lblOpcoes);
 
         textField = new JTextField();
-        textField.setBounds(20, 302, 116, 20);
+        textField.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        textField.setBounds(285, 344, 55, 35);
         contentPane.add(textField);
         textField.setColumns(10);
 
-        JButton btnNewButton = new JButton("New button");
-        btnNewButton.setBounds(163, 301, 116, 23);
+        JButton btnNewButton = new JButton("Confirmar");
+        btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 24));
+        btnNewButton.setBounds(350, 344, 133, 37);
         contentPane.add(btnNewButton);
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-
                 String resposta = textField.getText();
                 boolean resultadoResposta = verificaResposta(resposta);  
+                textField.setText("");
                 
                 if (resultadoResposta == true && isUltimaPergunta()) {
                     exibirPergunta(lblText, lblOpcoes);

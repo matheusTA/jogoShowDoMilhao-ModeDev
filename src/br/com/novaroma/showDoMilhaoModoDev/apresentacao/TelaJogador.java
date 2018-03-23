@@ -28,25 +28,27 @@ public class TelaJogador extends JFrame {
      */
     public TelaJogador() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 909, 443);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(102, 153, 153));
+        contentPane.setBackground(new Color(250, 235, 215));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        setLocationRelativeTo(null);
+
         
         
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnConfirmar.setForeground(new Color(0, 0, 0));
-        btnConfirmar.setBackground(new Color(0, 0, 0));
-        btnConfirmar.setBounds(307, 218, 117, 32);
+        btnConfirmar.setBackground(Color.LIGHT_GRAY);
+        btnConfirmar.setBounds(388, 225, 117, 32);
         contentPane.add(btnConfirmar);
         
         textField = new JTextField();
         textField.setFont(new Font("Agency FB", Font.PLAIN, 23));
         textField.setBackground(new Color(204, 204, 204));
-        textField.setBounds(10, 91, 268, 32);
+        textField.setBounds(312, 173, 268, 32);
         contentPane.add(textField);
         textField.setColumns(10);
         
@@ -54,7 +56,7 @@ public class TelaJogador extends JFrame {
         lblQualOSeu.setBackground(new Color(0, 0, 0));
         lblQualOSeu.setForeground(new Color(0, 0, 0));
         lblQualOSeu.setFont(new Font("Agency FB", Font.PLAIN, 24));
-        lblQualOSeu.setBounds(10, 45, 180, 27);
+        lblQualOSeu.setBounds(312, 135, 180, 27);
         contentPane.add(lblQualOSeu);
         
         btnConfirmar.addActionListener(new ActionListener() {
@@ -64,15 +66,17 @@ public class TelaJogador extends JFrame {
                
                 JogadorController jogadorController = new JogadorController();
                 jogadorCriado = jogadorController.criarJogador(textField.getText());
-                System.out.println("Jogador criado:\n" + jogadorCriado);
-                fecharTela();
+                trocarTelaPergunta(jogadorCriado);
+                
             }
         });
           
     }
     
-    private void fecharTela() {
+    private void trocarTelaPergunta(Jogador jogadorCriado) {
         this.setVisible(false);
+        TelaPergunta telaPergunta = new TelaPergunta(jogadorCriado);
+        telaPergunta.show();
     }
-   
+    
 }
