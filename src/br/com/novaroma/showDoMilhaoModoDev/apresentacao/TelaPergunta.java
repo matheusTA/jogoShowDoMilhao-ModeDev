@@ -16,6 +16,7 @@ import javax.swing.border.EmptyBorder;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Opcao;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Pergunta;
+import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
 import br.com.novaroma.showDoMilhaoModoDev.negocio.PerguntaController;
 
 public class TelaPergunta extends JFrame {
@@ -93,7 +94,7 @@ public class TelaPergunta extends JFrame {
                 if (resultadoResposta == true && isUltimaPergunta()) {
                     exibirPergunta(lblText, lblOpcoes);
                 }else {
-                    System.exit(0);
+                    finaizarJogo();
                 }
                 
             };
@@ -107,6 +108,12 @@ public class TelaPergunta extends JFrame {
 
     private void iniciarJogo() {
         this.perguntas = this.perguntaController.carregarPerguntas();
+    }
+    
+    private void finaizarJogo() {
+        JogadorController jogadorController = new JogadorController();
+        jogadorController.salvarRecorde(this.jogador);
+        System.exit(0);
     }
 
     private void exibirPergunta(JLabel JLtexto, JLabel JLopcoes) {
