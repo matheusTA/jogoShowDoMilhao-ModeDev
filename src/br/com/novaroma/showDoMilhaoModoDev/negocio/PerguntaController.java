@@ -1,6 +1,9 @@
 package br.com.novaroma.showDoMilhaoModoDev.negocio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Opcao;
@@ -59,7 +62,7 @@ public class PerguntaController {
            perguntas[i] = pergunta;
            
         }
-        
+          
         return perguntas;
     }
     

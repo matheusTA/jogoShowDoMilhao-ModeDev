@@ -1,6 +1,6 @@
 package br.com.novaroma.showDoMilhaoModoDev.entidades;
 
-public class Jogador {
+public class Jogador implements Comparable<Jogador>{
 
     private String nome;
     private int pontos;
@@ -41,4 +41,10 @@ public class Jogador {
      String menssagem = "Nome: " + this.nome + "\nPontos: " + this.pontos;
         return menssagem;
     }
+
+    @Override
+    public int compareTo(Jogador arg0) {
+        return this.getPontos() - arg0.getPontos();
+    }
+
 }

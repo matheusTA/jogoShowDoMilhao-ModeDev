@@ -51,7 +51,7 @@ public class TelaRecorde extends JFrame {
 
         String menssagem = "<html>";
         for (int i = 0; i < recordes.length; i++) {
-            menssagem += "Nome: " + recordes[i].getNome() + "    Pontos: " + recordes[i].getPontos() + "<br>";
+            menssagem +=  (i+1)+ "º) Nome: " + recordes[i].getNome() + " //   Pontos: " + recordes[i].getPontos() + "<br>";
         }
         lblNewLabel.setText(menssagem + "</html>");
 

@@ -94,6 +94,7 @@ public class TelaPergunta extends JFrame {
                 if (resultadoResposta == true && isUltimaPergunta()) {
                     exibirPergunta(lblText, lblOpcoes);
                 }else {
+                    trocarTelaFinal();
                     finaizarJogo();
                 }
                 
@@ -113,7 +114,7 @@ public class TelaPergunta extends JFrame {
     private void finaizarJogo() {
         JogadorController jogadorController = new JogadorController();
         jogadorController.salvarRecorde(this.jogador);
-        System.exit(0);
+        
     }
 
     private void exibirPergunta(JLabel JLtexto, JLabel JLopcoes) {
@@ -154,5 +155,11 @@ public class TelaPergunta extends JFrame {
     
     private void addContadorPerguntas() {
         this.contadorDePerguntas++;
+    }
+    
+    private void trocarTelaFinal() {
+        this.setVisible(false);
+        TelaFinal telaFinal = new TelaFinal(this.jogador);
+        telaFinal.show();
     }
 }
