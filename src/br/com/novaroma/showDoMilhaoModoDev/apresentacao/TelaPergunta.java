@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,15 +28,15 @@ public class TelaPergunta extends JFrame {
     private Pergunta perguntaAtual;
     private JTextField textField;
     private JLabel lblNewLabel_1;
-    
+
     private PerguntaController perguntaController = new PerguntaController();
 
     private Jogador jogador;
 
     public TelaPergunta(Jogador jogadorCriado) {
-        
+
         this.jogador = jogadorCriado;
-        
+
         setBackground(Color.BLUE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 909, 443);
@@ -47,19 +48,18 @@ public class TelaPergunta extends JFrame {
         contentPane.setLayout(null);
         setLocationRelativeTo(null);
 
-        
         JLabel lblNewLabel = new JLabel("Nome");
         lblNewLabel.setFont(new Font("Agency FB", Font.PLAIN, 20));
         lblNewLabel.setBounds(10, 11, 351, 25);
         contentPane.add(lblNewLabel);
-        lblNewLabel.setText("Nome: " +this.jogador.getNome());
-        
+        lblNewLabel.setText("Nome: " + this.jogador.getNome());
+
         this.lblNewLabel_1 = new JLabel("Pontos");
         lblNewLabel_1.setFont(new Font("Agency FB", Font.PLAIN, 20));
         this.lblNewLabel_1.setBounds(10, 47, 133, 25);
         contentPane.add(this.lblNewLabel_1);
         this.lblNewLabel_1.setText("Pontuação: " + this.jogador.getPontos());
-        
+
         JLabel lblText = new JLabel();
         lblText.setFont(new Font("Agency FB", Font.BOLD, 24));
         lblText.setForeground(new Color(0, 0, 0));
@@ -88,33 +88,43 @@ public class TelaPergunta extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 String resposta = textField.getText();
-                boolean resultadoResposta = verificaResposta(resposta);  
-                textField.setText("");
-                
-                if (resultadoResposta == true && isUltimaPergunta()) {
-                    exibirPergunta(lblText, lblOpcoes);
+                boolean validaOpcao = perguntaController.validaOpcao(resposta);
+               
+                if (validaOpcao == true) {
+                    boolean resultadoResposta = verificaResposta(resposta);
+                    textField.setText("");
+
+                    if (resultadoResposta == true && isUltimaPergunta()) {
+                        exibirPergunta(lblText, lblOpcoes);
+                    } else {
+                        trocarTelaFinal();
+                        finaizarJogo();
+                    }
                 }else {
-                    trocarTelaFinal();
-                    finaizarJogo();
+                    JOptionPane.showMessageDialog(null, "Resposta invalida, tente novamente.");
+                    textField.setText("");
                 }
                 
+                
+
             };
         });
 
         iniciarJogo();
         exibirPergunta(lblText, lblOpcoes);
-        
-      
+
     }
+
+    
 
     private void iniciarJogo() {
         this.perguntas = this.perguntaController.carregarPerguntas();
     }
-    
+
     private void finaizarJogo() {
         JogadorController jogadorController = new JogadorController();
         jogadorController.salvarRecorde(this.jogador);
-        
+
     }
 
     private void exibirPergunta(JLabel JLtexto, JLabel JLopcoes) {
@@ -148,18 +158,19 @@ public class TelaPergunta extends JFrame {
         }
 
     }
-    
+
     private boolean isUltimaPergunta() {
-        return this.perguntaAtual != this.perguntas[this.perguntas.length-1];
+        return this.perguntaAtual != this.perguntas[this.perguntas.length - 1];
     }
-    
+
     private void addContadorPerguntas() {
         this.contadorDePerguntas++;
     }
-    
+
     private void trocarTelaFinal() {
         this.setVisible(false);
         TelaFinal telaFinal = new TelaFinal(this.jogador);
         telaFinal.show();
+
     }
 }

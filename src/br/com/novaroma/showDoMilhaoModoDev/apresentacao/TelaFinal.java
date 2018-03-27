@@ -1,6 +1,7 @@
 package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,12 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
-import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
 
 public class TelaFinal extends JFrame {
 
     private JPanel contentPane;
     private String status;
+
     public TelaFinal(Jogador jogador) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 909, 433);
@@ -48,10 +49,10 @@ public class TelaFinal extends JFrame {
         lblNewLabel_1.setFont(new Font("Agency FB", Font.PLAIN, 34));
         lblNewLabel_1.setBounds(367, 11, 159, 41);
         contentPane.add(lblNewLabel_1);
-        
-        if(jogador.getPontos() == 1000000) {
-           this.status = "VOCÊ GANHOU O JOGO, PARABÊNS"; 
-        }else {
+
+        if (jogador.getPontos() == 1000000) {
+            this.status = "VOCÊ GANHOU O JOGO, PARABÊNS";
+        } else {
             this.status = "VOCÊ PERDEU";
         }
 
@@ -65,10 +66,25 @@ public class TelaFinal extends JFrame {
         lblPontos.setBounds(289, 229, 314, 51);
         contentPane.add(lblPontos);
         lblPontos.setText("Pontos: " + jogador.getPontos());
+
+        JButton btnMenu = new JButton("Menu");
+        btnMenu.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        btnMenu.setBounds(289, 336, 95, 33);
+        contentPane.add(btnMenu);
+        btnMenu.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                trocaTelaMenu();
+            };
+        });
     }
 
     private void finaizarJogo() {
         System.exit(0);
     }
 
+    private void trocaTelaMenu() {
+        this.setVisible(false);
+        TelaPrincipal telaPrincipal = new TelaPrincipal();
+        telaPrincipal.show();
+    }
 }

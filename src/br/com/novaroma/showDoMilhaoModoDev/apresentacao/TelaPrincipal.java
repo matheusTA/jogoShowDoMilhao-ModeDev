@@ -10,9 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class TelaPrincipal {
+public class TelaPrincipal extends JFrame{
 
-    private JFrame frame;
+    
 
     /**
      * Launch the application.
@@ -23,7 +23,7 @@ public class TelaPrincipal {
                 try {
                     TelaPrincipal window = new TelaPrincipal();
 
-                    window.frame.setVisible(true);
+                    window.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -36,7 +36,7 @@ public class TelaPrincipal {
      */
     public TelaPrincipal() {     
         initialize();
-        this.frame.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         
     }
 
@@ -44,13 +44,12 @@ public class TelaPrincipal {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
-        frame.getContentPane().setForeground(new Color(0, 0, 0));
-        frame.setBackground(new Color(250, 235, 215));
-        frame.getContentPane().setBackground(new Color(250, 235, 215));
-        frame.setBounds(100, 100, 909, 433);
+        this.getContentPane().setForeground(new Color(0, 0, 0));
+        this.setBackground(new Color(250, 235, 215));
+        this.getContentPane().setBackground(new Color(250, 235, 215));
+        this.setBounds(100, 100, 909, 433);
 
-        frame.getContentPane().setLayout(null);
+        this.getContentPane().setLayout(null);
 
         JButton btnJogar = new JButton("Jogar");
         btnJogar.addActionListener(new ActionListener() {
@@ -60,7 +59,7 @@ public class TelaPrincipal {
         });
         btnJogar.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnJogar.setBounds(397, 166, 98, 37);
-        frame.getContentPane().add(btnJogar);
+        this.getContentPane().add(btnJogar);
 
         JButton btnNewButton = new JButton("Recorde");
         btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 24));
@@ -71,12 +70,12 @@ public class TelaPrincipal {
             };
         });
         btnNewButton.setBounds(397, 236, 98, 37);
-        frame.getContentPane().add(btnNewButton);
+        this.getContentPane().add(btnNewButton);
 
         JButton btnSair = new JButton("Sair");
         btnSair.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnSair.setBounds(397, 304, 98, 37);
-        frame.getContentPane().add(btnSair);
+        this.getContentPane().add(btnSair);
         btnSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 System.exit(0);         
@@ -87,11 +86,11 @@ public class TelaPrincipal {
         lblShowDoMilho.setForeground(new Color(0, 0, 0));
         lblShowDoMilho.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 30));
         lblShowDoMilho.setBounds(246, 64, 399, 74);
-        frame.getContentPane().add(lblShowDoMilho);
+        this.getContentPane().add(lblShowDoMilho);
     }
     
     private void trocarTelaCriarJogador() {
-        this.frame.setVisible(false);
+        this.setVisible(false);
         TelaJogador telaCriarJogador = new TelaJogador();
         telaCriarJogador.show();
     }
@@ -99,7 +98,7 @@ public class TelaPrincipal {
    
     
     private void trocarTelaRecorde() {
-        this.frame.setVisible(false);
+        this.setVisible(false);
         TelaRecorde telaRecorde = new TelaRecorde();
         telaRecorde.show();
     }
