@@ -47,7 +47,7 @@ public class Pergunta {
         if(this.dificuldade == DIFICULDADE.FACIL) {
             return 25000;
         }else if(this.dificuldade == DIFICULDADE.MEDIO) {
-            return 10000;
+            return 100000;
         }else if(this.dificuldade == DIFICULDADE.DIFICIL) {
             return 250000;
         }else {
