@@ -1,6 +1,10 @@
 package br.com.novaroma.showDoMilhaoModoDev.negocio;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
 
 import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Opcao;
@@ -71,6 +75,25 @@ public class PerguntaController {
         } else {
             return false;
         }
+    }
+
+    public Pergunta removeDuasOpcoesIncorretas(Pergunta perguntaAtual) {
+
+        ArrayList<Opcao> listaOpcoes = new ArrayList<Opcao>(Arrays.asList(perguntaAtual.getOpcoes()));
+
+        for (int i = 0; i < listaOpcoes.size(); i++) {
+
+            if (listaOpcoes.get(i).isCorreto() == false) {
+                listaOpcoes.remove(i);
+            }
+
+        }
+
+        Opcao[] novasOpcoes = new Opcao[listaOpcoes.size()];
+        novasOpcoes = listaOpcoes.toArray(novasOpcoes);
+        perguntaAtual.setOpcoes(novasOpcoes);
+        return perguntaAtual;
+
     }
 
 }
