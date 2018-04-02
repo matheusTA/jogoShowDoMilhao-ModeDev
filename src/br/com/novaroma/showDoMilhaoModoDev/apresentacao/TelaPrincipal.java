@@ -10,9 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class TelaPrincipal extends JFrame{
-
-    
+public class TelaPrincipal extends JFrame {
 
     /**
      * Launch the application.
@@ -34,10 +32,10 @@ public class TelaPrincipal extends JFrame{
     /**
      * Create the application.
      */
-    public TelaPrincipal() {     
+    public TelaPrincipal() {
         initialize();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -65,8 +63,8 @@ public class TelaPrincipal extends JFrame{
         btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-               trocarTelaRecorde();
-                
+
+                trocaTelaRecordeComScroll();
             };
         });
         btnNewButton.setBounds(397, 236, 98, 37);
@@ -78,7 +76,7 @@ public class TelaPrincipal extends JFrame{
         this.getContentPane().add(btnSair);
         btnSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                System.exit(0);         
+                System.exit(0);
             };
         });
 
@@ -88,18 +86,16 @@ public class TelaPrincipal extends JFrame{
         lblShowDoMilho.setBounds(246, 64, 399, 74);
         this.getContentPane().add(lblShowDoMilho);
     }
-    
+
     private void trocarTelaCriarJogador() {
         this.setVisible(false);
         TelaJogador telaCriarJogador = new TelaJogador();
         telaCriarJogador.show();
     }
-    
-   
-    
-    private void trocarTelaRecorde() {
+
+    private void trocaTelaRecordeComScroll() {
         this.setVisible(false);
-        TelaRecorde telaRecorde = new TelaRecorde();
-        telaRecorde.show();
+        TelaRecordeComScroll telaRecordeComScroll = new TelaRecordeComScroll();
+        telaRecordeComScroll.show();
     }
 }

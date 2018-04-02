@@ -11,9 +11,10 @@ import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
 
 public class JogadorController {
-
+    Jogador jogador;
+    
     public Jogador criarJogador(String nome) {
-        Jogador jogador = new Jogador(nome);
+        this.jogador = new Jogador(nome);
         jogador.setPontos(0);
         return jogador;
     }
