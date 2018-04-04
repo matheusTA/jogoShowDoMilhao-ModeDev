@@ -19,6 +19,7 @@ public class TelaFinal extends JFrame {
     private JPanel contentPane;
     private String status;
 
+    
     public TelaFinal(Jogador jogador) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 909, 433);
@@ -74,6 +75,7 @@ public class TelaFinal extends JFrame {
         btnMenu.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 trocaTelaMenu();
+                
             };
         });
     }

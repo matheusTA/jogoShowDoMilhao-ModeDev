@@ -190,8 +190,13 @@ public class TelaPergunta extends JFrame {
 
     private void trocarTelaFinal() {
         this.setVisible(false);
+        zeraContadorDePerguntas();
         TelaFinal telaFinal = new TelaFinal(this.jogador);
         telaFinal.show();
 
+    }
+    
+    private void zeraContadorDePerguntas() {
+        this.contadorDePerguntas = 0;
     }
 }
