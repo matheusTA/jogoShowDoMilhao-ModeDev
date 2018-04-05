@@ -126,7 +126,7 @@ public class TelaPergunta extends JFrame {
             }
         });
         btnNewButton_1.setFont(new Font("Agency FB", Font.PLAIN, 20));
-        btnNewButton_1.setBounds(125, 344, 143, 35);
+        btnNewButton_1.setBounds(125, 344, 160, 35);
         contentPane.add(btnNewButton_1);
 
         JLabel lblNewLabel_2 = new JLabel("Ajuda:");
