@@ -69,12 +69,17 @@ public class TelaRecordeComScroll extends JFrame {
         this.recordes = jogadorController.carregarRecordes();
 
         String menssagem = "<html>";
-        for (int i = 0; i < recordes.length; i++) {
-            menssagem += (i + 1) + "º) Nome: " + recordes[i].getNome() + " //   Pontos: " + recordes[i].getPontos()
-                    + "<br>";
+        if (this.recordes != null) {
+            for (int i = 0; i < recordes.length; i++) {
+                menssagem += (i + 1) + "º) Nome: " + recordes[i].getNome() + " //   Pontos: " + recordes[i].getPontos()
+                        + "<br>";
+            }
+
+            this.label.setText(menssagem);
+        } else {
+            this.label.setText(menssagem);
         }
 
-        this.label.setText(menssagem);
     }
 
     private void trocaTelaMenu() {

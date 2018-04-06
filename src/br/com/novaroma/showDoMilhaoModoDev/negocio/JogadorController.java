@@ -12,7 +12,7 @@ import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
 
 public class JogadorController {
     Jogador jogador;
-    
+
     public Jogador criarJogador(String nome) {
         this.jogador = new Jogador(nome);
         jogador.setPontos(0);
@@ -22,19 +22,21 @@ public class JogadorController {
     public Jogador[] carregarRecordes() {
         ArrayList<String[]> recordesTexto = CSVLeitor.lerArquivo("Recordes");
         Jogador[] recordes = new Jogador[recordesTexto.size()];
+        try {
+            for (int i = 0; i < recordesTexto.size(); i++) {
 
-        for (int i = 0; i < recordesTexto.size(); i++) {
+                String[] recordeLinha = recordesTexto.get(i);
 
-            String[] recordeLinha = recordesTexto.get(i);
+                String nome = recordeLinha[0];
+                String pontuacao = recordeLinha[1];
+                Jogador recorDeJogador = new Jogador(nome, Integer.parseInt(pontuacao));
 
-            String nome = recordeLinha[0];
-            String pontuacao = recordeLinha[1];
-            Jogador recorDeJogador = new Jogador(nome, Integer.parseInt(pontuacao));
+                recordes[i] = recorDeJogador;
 
-            recordes[i] = recorDeJogador;
-
+            }
+        } catch (Exception e) {
+            return null;
         }
-
         return ordenarJogadoresPorPontos(recordes);
     }
 
@@ -44,10 +46,7 @@ public class JogadorController {
     }
 
     public boolean salvarRecorde(Jogador jogador) {
-
         return CSVGravador.gravarJogadorArquivo("Recordes", jogador);
-
     }
-    
-    
+
 }

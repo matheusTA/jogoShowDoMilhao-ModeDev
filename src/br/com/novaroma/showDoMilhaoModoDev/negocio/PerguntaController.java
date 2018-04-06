@@ -68,11 +68,14 @@ public class PerguntaController {
     }
 
     public boolean validaOpcao(String resposta) {
-        int respostaInt = Integer.parseInt(resposta);
-
-        if (respostaInt >= 0 && respostaInt <= 3) {
-            return true;
-        } else {
+        try {
+            int respostaInt = Integer.parseInt(resposta);
+            if (respostaInt >= 0 && respostaInt <= 3) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException exception) {
             return false;
         }
     }
@@ -95,5 +98,4 @@ public class PerguntaController {
         return perguntaAtual;
 
     }
-
 }

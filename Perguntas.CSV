@@ -7,4 +7,4 @@ A que pacote pertence a classe JFrame?;java.awt;false;javax.swing;true;java.rmi;
 Qual palavra reservada utilizamos para que uma classe possa derivar de outra classe?;derive;false;inherits;false;instanceof;false;extends;true;MEDIO;
 Qual vetor em java não existe?;Unidimensional;false;Bidimensional;false;Tridimensional;false;Nenhuma das alternativas;true;MEDIO;
 O resultado da tabala verdade de (F || ((T) && !(T))) é igual a qual resultado?;(T || F);false;!(F && F);false;!(F || !(!T));true;Nenhuma das alternativas;false;DIFICIL;
-Na biblioteca gráfica Swing. Para criar um elemento gráfico "caixa de texto" devemos instanciar?;JLabel("caixa de texto");false;JBox caixa = "Caixa de Texto";false;JTextField caixa = new JTextField();true;Nenhuma alternativa;false;DIFICIL; 
+"Na biblioteca gráfica Swing. Para criar um elemento gráfico ""caixa de texto"" devemos instanciar?";"JLabel(""caixa de texto"")";false;"JBox caixa = ""Caixa de Texto""";false;JTextField caixa = new JTextField();true;Nenhuma alternativa;false;DIFICIL; 
