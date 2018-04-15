@@ -3,8 +3,7 @@ package br.com.novaroma.showDoMilhaoModoDev.negocio;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+
 
 import br.com.novaroma.showDoMilhaoModoDev.dados.CSVGravador;
 import br.com.novaroma.showDoMilhaoModoDev.dados.CSVLeitor;
@@ -48,5 +47,7 @@ public class JogadorController {
     public boolean salvarRecorde(Jogador jogador) {
         return CSVGravador.gravarJogadorArquivo("Recordes", jogador);
     }
+
+    
 
 }

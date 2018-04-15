@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +23,6 @@ public class TelaJogador extends JFrame {
     private Jogador jogadorCriado;
     private JLabel lblQualOSeu;
 
-  
     /**
      * Create the frame.
      */
@@ -36,47 +36,55 @@ public class TelaJogador extends JFrame {
         contentPane.setLayout(null);
         setLocationRelativeTo(null);
 
-        
-        
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Agency FB", Font.PLAIN, 24));
         btnConfirmar.setForeground(new Color(0, 0, 0));
         btnConfirmar.setBackground(Color.LIGHT_GRAY);
         btnConfirmar.setBounds(388, 225, 117, 32);
         contentPane.add(btnConfirmar);
-        
+
         textField = new JTextField();
         textField.setFont(new Font("Agency FB", Font.PLAIN, 23));
         textField.setBackground(new Color(204, 204, 204));
         textField.setBounds(312, 173, 268, 32);
         contentPane.add(textField);
         textField.setColumns(10);
-        
+
         lblQualOSeu = new JLabel("Qual o seu nome:");
         lblQualOSeu.setBackground(new Color(0, 0, 0));
         lblQualOSeu.setForeground(new Color(0, 0, 0));
         lblQualOSeu.setFont(new Font("Agency FB", Font.PLAIN, 24));
         lblQualOSeu.setBounds(312, 135, 180, 27);
         contentPane.add(lblQualOSeu);
-        
+
         btnConfirmar.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
-               
                 JogadorController jogadorController = new JogadorController();
-                jogadorCriado = jogadorController.criarJogador(textField.getText());
-                trocarTelaPergunta(jogadorCriado);
-                
+                Jogador[] jogadoresCadastrados = jogadorController.carregarRecordes();
+                boolean flag = true;
+                for (int i = 0; i < jogadoresCadastrados.length; i++) {
+                    if (textField.getText().equals(jogadoresCadastrados[i].getNome())) {
+                        JOptionPane.showMessageDialog(null, "Esse nome ja existe, tente outro nome");
+                        textField.setText("");
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag == true) {
+                    jogadorCriado = jogadorController.criarJogador(textField.getText());
+                    trocarTelaPergunta(jogadorCriado);
+                }
             }
         });
-          
+
     }
-    
+
     private void trocarTelaPergunta(Jogador jogadorCriado) {
         this.setVisible(false);
         TelaPergunta telaPergunta = new TelaPergunta(jogadorCriado);
         telaPergunta.show();
     }
-    
+
 }
