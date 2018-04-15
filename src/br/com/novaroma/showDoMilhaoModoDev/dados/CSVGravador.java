@@ -12,12 +12,12 @@ import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
 public class CSVGravador {
 
     public static boolean gravarJogadorArquivo(String nomeDoArquivo, Jogador jogador) {
-
         String csvFile = nomeDoArquivo + ".csv";
         String cvsSplitBy = ";";
         ArrayList<Jogador> recordesNovoJogador;
         JogadorController jogadorControler = new JogadorController();
         Jogador[] carregarRecordes = jogadorControler.carregarRecordes();
+        
         try {
             recordesNovoJogador = new ArrayList<Jogador>(Arrays.asList(carregarRecordes));
         } catch (Exception e) {
@@ -25,10 +25,9 @@ public class CSVGravador {
         }
 
         recordesNovoJogador.add(jogador);
-
         PrintWriter pw;
+        
         try {
-
             pw = new PrintWriter(new File(csvFile));
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -39,19 +38,15 @@ public class CSVGravador {
                 stringBuilder.append(recordesNovoJogador.get(i).getPontos());
                 stringBuilder.append(cvsSplitBy);
                 stringBuilder.append('\n');
-
             }
 
             pw.write(stringBuilder.toString());
             pw.close();
-
             return true;
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-
             return false;
         }
-
     }
 }

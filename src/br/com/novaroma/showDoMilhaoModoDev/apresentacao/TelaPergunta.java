@@ -32,7 +32,8 @@ public class TelaPergunta extends JFrame {
     private PerguntaController perguntaController = new PerguntaController();
 
     private Jogador jogador;
-    int contador = 0;
+    int contadorAjuda01 = 0;
+    int contadorAjuda02 = 0;
 
     public TelaPergunta(Jogador jogadorCriado) {
 
@@ -116,23 +117,38 @@ public class TelaPergunta extends JFrame {
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                if (contador < 1) {
+                if (contadorAjuda01 < 1) {
                     perguntaAtual = perguntaController.removeDuasOpcoesIncorretas(perguntaAtual);
                     exibirPergunta(perguntaAtual, lblText, lblOpcoes);
-                    contador++;
+                    contadorAjuda01++;
                 } else {
                     JOptionPane.showMessageDialog(null, "Você ja usou essa ajuda");
                 }
             }
         });
         btnNewButton_1.setFont(new Font("Agency FB", Font.PLAIN, 20));
-        btnNewButton_1.setBounds(125, 344, 160, 35);
+        btnNewButton_1.setBounds(63, 323, 160, 35);
         contentPane.add(btnNewButton_1);
 
         JLabel lblNewLabel_2 = new JLabel("Ajuda:");
         lblNewLabel_2.setFont(new Font("Agency FB", Font.PLAIN, 30));
-        lblNewLabel_2.setBounds(70, 340, 62, 35);
+        lblNewLabel_2.setBounds(10, 319, 62, 35);
         contentPane.add(lblNewLabel_2);
+
+        JButton btnNewButton_2 = new JButton("Plateia");
+        btnNewButton_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                if (contadorAjuda02 < 1) {
+                    perguntaController.ajudaPlateia(perguntaAtual);
+                    contadorAjuda02++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Você ja usou essa ajuda");
+                }
+            }
+        });
+        btnNewButton_2.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        btnNewButton_2.setBounds(63, 358, 160, 35);
+        contentPane.add(btnNewButton_2);
 
     }
 
@@ -151,7 +167,7 @@ public class TelaPergunta extends JFrame {
         exibirPergunta(this.perguntaAtual, JLtexto, JLopcoes);
         addContadorPerguntas();
     }
-    
+
     private void exibirPergunta(Pergunta pergunta, JLabel JLtexto, JLabel JLopcoes) {
         JLtexto.setText(this.perguntaAtual.getTexto());
 
@@ -195,7 +211,7 @@ public class TelaPergunta extends JFrame {
         telaFinal.show();
 
     }
-    
+
     private void zeraContadorDePerguntas() {
         this.contadorDePerguntas = 0;
     }

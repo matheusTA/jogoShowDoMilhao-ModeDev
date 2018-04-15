@@ -1,8 +1,8 @@
 package br.com.novaroma.showDoMilhaoModoDev.negocio;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -96,6 +96,30 @@ public class PerguntaController {
         novasOpcoes = listaOpcoes.toArray(novasOpcoes);
         perguntaAtual.setOpcoes(novasOpcoes);
         return perguntaAtual;
+
+    }
+
+    public void ajudaPlateia(Pergunta perguntaAtual) {
+        for (int i = 0; i < perguntaAtual.getOpcoes().length; i++) {
+
+            if (perguntaAtual.getOpcoes()[i].isCorreto() == true) {
+                JOptionPane.showMessageDialog(null, geradorDeIntRandom() + "% da plateia acha que é a resposta é ["
+                        + i + "]");
+            }
+        }
+    }
+
+    public int geradorDeIntRandom() {
+        int[] array = new int[15];
+        int percentualPlateia = 80;
+        Random gerador = new Random();
+
+        for (int i = 0; i < 15; i++) {
+            array[i] = percentualPlateia;
+            percentualPlateia++;
+        }
+
+        return array[gerador.nextInt(16)];
 
     }
 }
