@@ -64,7 +64,8 @@ public class TelaJogador extends JFrame {
                 JogadorController jogadorController = new JogadorController();
                 Jogador[] jogadoresCadastrados = jogadorController.carregarRecordes();
                 boolean flag = true;
-                for (int i = 0; i < jogadoresCadastrados.length; i++) {
+                
+                for (int i = 0; i < jogadoresCadastrados.length; i++) {                    
                     if (textField.getText().equals(jogadoresCadastrados[i].getNome())) {
                         JOptionPane.showMessageDialog(null, "Esse nome ja existe, tente outro nome");
                         textField.setText("");
@@ -78,7 +79,6 @@ public class TelaJogador extends JFrame {
                 }
             }
         });
-
     }
 
     private void trocarTelaPergunta(Jogador jogadorCriado) {

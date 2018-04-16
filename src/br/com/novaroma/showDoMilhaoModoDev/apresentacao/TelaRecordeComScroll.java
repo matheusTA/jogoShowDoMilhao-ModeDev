@@ -2,19 +2,22 @@ package br.com.novaroma.showDoMilhaoModoDev.apresentacao;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
+import br.com.novaroma.showDoMilhaoModoDev.dados.CSVGravador;
 import br.com.novaroma.showDoMilhaoModoDev.entidades.Jogador;
 import br.com.novaroma.showDoMilhaoModoDev.negocio.JogadorController;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaRecordeComScroll extends JFrame {
 
@@ -59,9 +62,36 @@ public class TelaRecordeComScroll extends JFrame {
                 trocaTelaMenu();
             }
         });
-        btnMenu.setFont(new Font("Agency FB", Font.PLAIN, 26));
+        btnMenu.setFont(new Font("Agency FB", Font.PLAIN, 20));
         btnMenu.setBounds(762, 346, 95, 37);
         contentPane.add(btnMenu);
+
+        JButton btnNewButton = new JButton("Limpar recordes");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                JLabel label = new JLabel("Digite a senha:");
+                // criar o componente grafico que recebera o que for digitado
+                JPasswordField jpf = new JPasswordField();
+                // Exibir a janela para o usuario
+                JOptionPane.showConfirmDialog(null, new Object[] { label, jpf }, "Senha:", JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+
+                String senhaDigitada = new String(jpf.getPassword());
+                if (senhaDigitada.equals("senha123")) {
+                    CSVGravador csvGravador = new CSVGravador();
+                    JogadorController jogadorController = new JogadorController();
+                    csvGravador.limpaArquivoReCordes();
+                   iniciarRecordes();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Senha incorreta");
+                }
+
+            }
+        });
+        btnNewButton.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        btnNewButton.setBounds(10, 346, 145, 35);
+        contentPane.add(btnNewButton);
     }
 
     public void iniciarRecordes() {

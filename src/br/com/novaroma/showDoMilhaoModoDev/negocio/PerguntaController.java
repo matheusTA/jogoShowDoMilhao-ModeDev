@@ -103,7 +103,7 @@ public class PerguntaController {
         for (int i = 0; i < perguntaAtual.getOpcoes().length; i++) {
 
             if (perguntaAtual.getOpcoes()[i].isCorreto() == true) {
-                JOptionPane.showMessageDialog(null, geradorDeIntRandom() + "% da plateia acha que é a resposta é ["
+                JOptionPane.showMessageDialog(null, geradorDeIntRandom() + "% da plateia acha que é a opção ["
                         + i + "]");
             }
         }

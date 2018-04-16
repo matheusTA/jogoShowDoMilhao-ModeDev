@@ -17,7 +17,7 @@ public class CSVGravador {
         ArrayList<Jogador> recordesNovoJogador;
         JogadorController jogadorControler = new JogadorController();
         Jogador[] carregarRecordes = jogadorControler.carregarRecordes();
-        
+
         try {
             recordesNovoJogador = new ArrayList<Jogador>(Arrays.asList(carregarRecordes));
         } catch (Exception e) {
@@ -26,7 +26,7 @@ public class CSVGravador {
 
         recordesNovoJogador.add(jogador);
         PrintWriter pw;
-        
+
         try {
             pw = new PrintWriter(new File(csvFile));
             StringBuilder stringBuilder = new StringBuilder();
@@ -44,6 +44,22 @@ public class CSVGravador {
             pw.close();
             return true;
 
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean limpaArquivoReCordes() {
+        String csvFile = "Recordes.csv";
+        PrintWriter pw;
+
+        try {
+            pw = new PrintWriter(new File(csvFile));
+            pw.write("");
+            pw.close();
+            return true;
+        
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return false;
